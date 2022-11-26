@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-odra&v%*-9i2xs1@y1voa&auu6wnyfjn&_ak)8)55jbx@6q@15
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','.versel.app', '.now.sh']
 
 
 # Application definition
@@ -133,3 +133,7 @@ STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles_build', 'static')

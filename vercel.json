@@ -1,0 +1,26 @@
+{
+    "version":2,
+    "builds":[
+        {
+            "src": "canteen_order_management/wsgi.py",
+            "use": "@vercel/python",
+            "config": { "maxLambdasSize": "15mb", "runtime" : "python3.10"}
+        },
+        {
+            "src": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": { "distDir": "staticfiles_build"}
+        }
+
+    ],
+    "routes":[
+        {
+            "src":"/static/(.*)",
+            "dest":"/static/$1"
+        },
+        {
+            "src":"/(.*)",
+            "dest": "canteen_order_management/wsgi.py"
+        }
+    ]
+}
