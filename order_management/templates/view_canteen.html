@@ -1,0 +1,40 @@
+{% load static%} {% block body %} {% include 'admin_nav.html'%}
+
+<center style="margin: 50px; font-size: 15px">
+  <b style="font-size: 30px">Canteen Owners</b>
+
+  <table class="ui selectable celled table" id="example">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Full Name</th>
+        <th>Email ID</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for i in data %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.user.first_name }} {{ i.user.last_name }}</td>
+        <td>{{ i.user.username }}</td>
+        <td>{{ i.mobile }}</td>
+        <td>{{ i.gender }}</td>
+        <td>
+          <a
+            href="{% url 'delete_candidate' i.user.id %}"
+            class="ui button btn"
+            onclick="return confirm('Do you really want to delete this candidate?')"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</center>
+
+{%endblock%}

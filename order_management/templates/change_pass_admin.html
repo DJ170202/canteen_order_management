@@ -1,0 +1,73 @@
+{% load static %}{% block body %} {% include 'admin_nav.html' %}
+
+<script>
+  function Checkpass() {
+    if (
+      document.change_pass_admin.npwd.value !=
+      document.change_pass_admin.cnpwd.value
+    ) {
+      alert("Password does not match");
+      document.change_pass_admin.cnpwd.focus();
+      return false;
+    } else {
+      return true;
+    }
+  }
+</script>
+
+<center>
+  <form
+    class="ui container login"
+    onsubmit="return Checkpass()"
+    method="post"
+    name="change_pass_admin"
+  >
+    {% csrf_token %}
+    <center><h1>Change Password</h1></center>
+    <br />
+    <label for="name"><b>Current Password:</b></label>
+    <input
+      type="password"
+      name="pwd"
+      id="pwd"
+      placeholder="Enter Current Password"
+      required
+    />
+    <br />
+    <label for="name"><b>New Password:</b></label>
+    <input
+      type="text"
+      name="npwd"
+      id="npwd"
+      placeholder="Enter New Password"
+      required
+    />
+    <br />
+    <label for="pass"><b>Confirm Password:</b></label>
+    <input
+      type="password"
+      name="cnpwd"
+      id="cnpwd"
+      placeholder="Re-Enter Password"
+      required
+    />
+    <br />
+    <button type="submit" class="btn">Submit</button>
+    <button type="reset" class="btn">Clear</button>
+  </form>
+</center>
+
+{% if error == "no" %}
+<script>
+  alert("Password Changed Successfully");
+  window.location=('{% url 'Logout' %}')
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Something went wrong,Try again!");
+</script>
+{% endif %} {% if error == "not" %}
+<script>
+  alert("Invalid Current Password");
+</script>
+{% endif %} {% endblock %}

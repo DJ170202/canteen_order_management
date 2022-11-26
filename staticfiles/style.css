@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .contain {
+    background-color: black;
+    color: white;
+    border-bottom: 3px solid yellow;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    border: 1px solid yellow;
+    padding: 8px;
+    margin: 3px;
+    font-size: x-large;
+    border-style: dotted;
+    background-color: rgb(255, 255, 0);
+    color: black;
+    font-weight: bold;
+  }
+  #logo {
+    height: 5rem;
+    width: 12rem;
+  }
+  
+  .banner img {
+    width: 100%;
+    height: 50rem;
+    opacity: 0.7;
+  }
+  .navbar ul {
+    display: flex;
+    list-style: none;
+  }
+  .navbar ul li a {
+    margin: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+  }
+  
+  .name {
+    margin: 15px;
+    color: white;
+    /* font-weight: bold; */
+    font-size: larger;
+  }
+  .navbar ul li a:hover {
+    color: yellow;
+    font-size: 20;
+  }
+  
+  .col3 i:hover {
+    color: yellow;
+  }
+  
+  .company {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .company div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid yellow;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+  }
+  
+  .company div:hover,
+  .company a:hover {
+    border-color: rgb(224, 224, 23);
+    background-color: yellow;
+    color: black;
+    /* box-shadow: 1px 1px 3px 2px rgb(127, 126, 52) inset; */
+  }
+  
+  .company a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+  
+  .container {
+    margin: 15px;
+  }
+  .container h1 {
+    font-size: 40;
+    font-weight: bolder;
+  }
+  .company div h2 {
+    margin: -5px;
+  }
+  
+  .login {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 50px;
+    margin: 80px;
+  }
+  .login input {
+    height: 40px;
+    border: 2px solid rgb(247, 247, 82);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: large;
+    margin: 10px;
+  }
+  .login label {
+    font-size: 20;
+    margin: 10px;
+  }
+  
+  .footer {
+    background-color: rgb(70, 67, 67);
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    /* margin:0; */
+    padding-top: 10px;
+  }
+  .footer i {
+    font-size: 20;
+  }
+  .fcopy {
+    background-color: rgb(70, 67, 67);
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+  }
+  
+  /* form */
+  .form {
+    font-size: 20px !important;
+  }
+  .form label {
+    font-weight: bolder;
+  }
+  .form input,
+  #description {
+    padding: 15px !important;
+    border: 2px solid yellow !important;
+  }
+  .form input:focus,
+  #description:focus {
+    border: 2px solid black !important;
+  }
+  
+  .btn {
+    border: 2px solid rgb(228, 216, 40);
+    border-radius: 5px;
+    background-color: yellow !important;
+    font-weight: bolder;
+    font-size: large;
+    padding: 10px;
+    cursor: pointer;
+    margin: 40px;
+    /* margin-bottom: 20px; */
+  }
+  
+  .bc:hover {
+    background-color: yellow !important;
+  }
+  

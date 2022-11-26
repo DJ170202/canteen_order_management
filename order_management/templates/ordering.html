@@ -1,0 +1,36 @@
+{% load static %}{% block body %} {% include 'student_nav.html' %}
+
+<center style="margin: 50px">
+  <b style="font-size: 30px">Order Placed by You</b>
+
+  <table class="ui selectable celled table" id="example">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for i in data %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        
+        <td>{{ i.description }}</td>
+        <td style="display: flex; justify-content: space-around">
+          <a class="ui button btn" href="{% url 'edit_orders' i.id %}"> Edit </a>
+          <a
+            href="{% url 'delete_job' i.id %}"
+            class="ui button btn"
+            onclick="return confirm('Do you really want to delete this order?')"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</center>
+{% endblock body %}

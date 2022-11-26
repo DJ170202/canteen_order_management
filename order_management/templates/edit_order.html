@@ -1,0 +1,72 @@
+{% load static %} {% block body %} {% include 'student_nav.html' %}
+
+<div class="ui container login">
+  <center><h1 style="margin-bottom: 20px">Edit Job Details</h1></center>
+  <form class="ui form" name="postjob" method="POST">
+    {% csrf_token %}
+    <div class="field">
+      <label for="title">Job Title : </label>
+      <input type="text" name="title" id="title" value="{{job.title}}" />
+    </div>
+
+    <div class="two fields">
+      <div class="field">
+        <label for="location">Location : </label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          value="{{job.location}}"
+        />
+      </div>
+      <div class="field">
+        <label for="salary">Salary (CTC) : </label>
+        <input type="text" name="salary" id="salary" value="{{job.salary}}" />
+      </div>
+    </div>
+
+    <div class="two fields">
+      <div class="field">
+        <label for="end_date">End Date : [{{job.end_date}}] </label>
+        <input type="date" name="end_date" id="end_date" />
+      </div>
+      <div class="field">
+        <label for="experience">Experience (In Years) : </label>
+        <input
+          type="text"
+          name="experience"
+          id="experience"
+          value="{{job.experience}}"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="skills">Skills : </label>
+      <input type="text" name="skills" id="skills" value="{{job.skills}}" />
+    </div>
+
+    <div class="field">
+      <label for="description">Description : </label>
+      <textarea name="description" id="description">
+{{job.description}}</textarea
+      >
+    </div>
+
+    <div style="display: flex; justify-content: space-around">
+      <button class="btn" type="submit" value="submit">Confirm</button>
+      <button class="btn" type="reset">Clear</button>
+    </div>
+  </form>
+</div>
+
+{% include 'footer.html'%} {% if error == "no" %}
+<script>
+  alert("Job Details Updated");
+  window.location=('{% url 'ordering' %}')
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Something went wrong,Try again!");
+</script>
+{% endif %} {%endblock body %}

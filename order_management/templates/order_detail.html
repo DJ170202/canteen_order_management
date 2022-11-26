@@ -1,0 +1,20 @@
+{% load static %}{% block body %} {% include 'canteen_nav.html' %}
+<center style="margin: 50px">
+  
+</center>
+
+
+
+<h4 style="margin-left: 50px">Description:</h4>
+<p style="margin-left: 50px; margin-right: 50px">{{ job.description }}</p>
+
+<center>
+  <a
+    href="{% url 'cancel_order' job.id %}"
+    class="ui button btn"
+    style="margin-top: 20px"
+    >Not Available</a
+  >
+</center>
+
+{% endblock body %}

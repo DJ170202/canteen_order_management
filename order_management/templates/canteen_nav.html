@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Canteen Order Management</title>
+
+    <meta charset="utf-8" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("#example").DataTable();
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="contain">
+      <div class="col1">
+        <div class="logo">          
+          <span>Canteen Order Management</span>
+        </div>
+      </div>
+
+      <div class="navbar">
+        <ul>
+          <li><a href="{% url 'canteen_home' %}">Home</a></li>
+
+          <li><a href="{% url 'order_list_canteen' %}">Order List</a></li>
+          <li><a href="{% url 'canteen_update' %}">Update Details</a></li>
+
+          <li>
+            <a href="{% url 'change_pass_canteen' %}">Change Password</a>
+          </li>
+
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+        </ul>
+      </div>
+      <div class="name">
+        Welcome &nbsp; {{request.user.first_name}} &nbsp;&nbsp;
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+{% load static%} {% block body %} {% include 'canteen_nav.html'%}
+
+<div class="ui container login">
+  <center><h1 style="margin-bottom: 20px">Application Form</h1></center>
+  <form
+    class="ui form"
+    name="signup"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <div class="two fields">
+      <div class="field">
+        <label for="fname">FirstName : </label>
+        <input
+          type="text"
+          name="fname"
+          id="fname"
+          value="{{candidate.user.first_name}}"
+          readonly
+        />
+      </div>
+      <div class="field">
+        <label for="lname">LastName : </label>
+        <input
+          type="text"
+          name="lname"
+          id="lname"
+          value="{{candidate.user.last_name}}"
+          readonly
+        />
+      </div>
+    </div> 
+
+     <div class="two fields">
+      {% if candidate.gender == "Male" %}
+      <div class="inline field">
+        <label for="gender">Gender : </label>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            border: 2px solid yellow;
+            border-radius: 5px;
+          "
+          class="radio"
+        >
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                id="male"
+                checked
+                readonly
+              />
+              <label>Male</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="gender" id="female" readonly />
+              <label>Female</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="inline field">
+        <label for="gender">Gender : </label>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            border: 2px solid yellow;
+            border-radius: 5px;
+          "
+          class="radio"
+        >
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                id="male"
+                readonly
+              />
+              <label>Male</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="gender" id="female" checked readonly />
+              <label>Female</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+       <div class="field">
+        <label for="resume">Upload Resume : </label>
+        <input
+          type="file"
+          name="resume"
+          id="resume"
+          style="font-size: 12px"
+          required
+        />
+      </div> 
+   </div> 
+
+    <div class="field">
+      <label for="mobile">Mobile : </label>
+      <input
+        type="text"
+        name="mobile"
+        id="mobile"
+        value="{{candidate.mobile}}"
+        readonly
+      />
+    </div>
+    <div class="field">
+      <label for="email">Email *: </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        value="{{request.user.email}}"
+        readonly
+      />
+    </div>
+
+    <div style="display: flex; justify-content: space-around">
+      <button class="btn" type="submit" value="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+{% include 'footer.html'%} {% if error == "ok" %}
+<script>
+  alert("Order Canceled");
+  window.location=('{% url 'order_list_canteen' %}')
+</script>
+{% endif %} 
+ {% endblock %}

@@ -1,0 +1,37 @@
+{% load static %}{% block body %} {% include 'canteen_nav.html' %}
+
+<center style="margin: 50px">
+  <b style="font-size: 30px">orders</b>
+
+  <table class="ui selectable celled table" id="example">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Ordered Items</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for i in job %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.description }}</td> <!--i.title will be edited to Ordered Items-->
+        {% comment %} <td>{{ i.company }}</td> <!--company, location, end_date will be commented-->
+        <td>{{ i.location }}</td>
+        <td>{{ i.end_date }}</td> {% endcomment %}
+
+        {% if i.id in li1 %}
+        <td>Not Available</td>
+        {% else %}
+        <td>
+          <a href="{% url 'order_detail' i.id %}" class="ui button btn">Not Available</a>
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</center>
+
+{% endblock body %}

@@ -1,0 +1,46 @@
+{% load static %}{% block body %} {% include 'student_nav.html' %}
+
+
+<center style="margin: 50px">
+  <b style="font-size: 30px">Candidates Applied</b>
+
+  <table class="ui selectable celled table" id="example">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Full Name</th>
+        <th>Email ID</th>
+        <th>Mobile</th>
+        <th>Job Title</th>
+        <th>Applied Date</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for i in data %} {% if request.user.id == i.job.recruiter.user.id %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>
+          {{ i.candidate.user.first_name }} {{ i.candidate.user.last_name }}
+        </td>
+        <td>{{ i.candidate.user.username }}</td>
+        <td>{{ i.candidate.mobile }}</td>
+        <td>{{ i.job.title }}</td>
+        <td>{{ i.applied_date }}</td>
+        <td>
+          <a href="{{ i.resume.url }}" download>Download Resume</a>
+          <a
+            href="{% url 'reject_candidate' i.id %}"
+            class="ui button btn"
+            onclick="return confirm('Do you really want to reject this candidate?')"
+            >Reject</a
+          >
+        </td>
+      </tr>
+      {% endif %} {% endfor %}
+    </tbody>
+  </table>
+</center>
+
+{% endblock body %}

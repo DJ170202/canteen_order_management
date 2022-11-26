@@ -1,0 +1,36 @@
+{% load static%} {% block body %} {% include 'navigation.html'%}
+
+<center>
+  <form class="ui container login" method="post">
+    {% csrf_token %}
+    <center><h1>Canteen Login</h1></center>
+    <br />
+    <label for="name"><b>Email Id :</b></label>
+    <input type="email" name="uname" id="name" placeholder="Enter Username" />
+    <br />
+    <label for="pass"><b>Password :</b></label>
+    <input type="password" name="pwd" id="pass" placeholder="Enter password" />
+    <br />
+    <center>
+      <a href="{%url 'forgot_password_canteen'%}" style="margin-right: 60px"
+        >Forgot password?</a
+      >
+      <a href="{%url 'canteen_sign_up'%}" style="margin-left: 60px"
+        >Create Account</a
+      >
+    </center>
+    <button type="submit" class="btn">Submit</button>
+    <button type="reset" class="btn">Clear</button>
+  </form>
+</center>
+
+{% include 'footer.html'%} {% if error == "no" %}
+<script>
+  alert("Login Successful");
+  window.location=('{% url 'canteen_home' %}')
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Invalid login credentials,Try again!");
+</script>
+{% endif %} {% endblock %}

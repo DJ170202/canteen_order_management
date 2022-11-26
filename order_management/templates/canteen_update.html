@@ -1,0 +1,119 @@
+{% load static%} {% block body %} {% include 'canteen_nav.html'%}
+
+<div class="ui container login">
+  <center><h1 style="margin-bottom: 20px">Canteen Owner Profile</h1></center>
+  <form class="ui form" name="signup" method="POST">
+    {% csrf_token %}
+    <div class="two fields">
+      <div class="field">
+        <label for="fname">FirstName : </label>
+        <input
+          type="text"
+          name="fname"
+          id="fname"
+          value="{{candidate.user.first_name}}"
+        />
+      </div>
+      <div class="field">
+        <label for="lname">LastName : </label>
+        <input
+          type="text"
+          name="lname"
+          id="lname"
+          value="{{candidate.user.last_name}}"
+        />
+      </div>
+    </div>
+
+    {% if candidate.gender == "Male" %}
+    <div class="inline field">
+      <label for="gender">Gender : </label>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          border: 2px solid yellow;
+          border-radius: 5px;
+        "
+        class="radio"
+      >
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="gender" value="Male" id="male" checked />
+            <label>Male</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="gender" id="female" />
+            <label>Female</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="inline field">
+      <label for="gender">Gender : </label>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          border: 2px solid yellow;
+          border-radius: 5px;
+        "
+        class="radio"
+      >
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="gender" value="Male" id="male" />
+            <label>Male</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="gender" id="female" checked />
+            <label>Female</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="field">
+      <label for="mobile">Mobile : </label>
+      <input
+        type="text"
+        name="mobile"
+        id="mobile"
+        value="{{candidate.mobile}}"
+      />
+    </div>
+    <div class="field">
+      <label for="email">Email *: </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        value="{{request.user.email}}"
+        readonly
+      />
+    </div>
+
+    <div style="display: flex; justify-content: space-around">
+      <button class="btn" type="submit" value="submit">Update Details</button>
+    </div>
+  </form>
+</div>
+
+{% include 'footer.html'%} {% if error == "no" %}
+<script>
+  alert("Details Updated");
+  window.location=('{% url 'canteen_home' %}')
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Something went wrong,Try again!");
+</script>
+{% endif %} {% endblock %}

@@ -1,0 +1,133 @@
+{% load static%} {% block body %} {% include 'navigation.html'%}
+
+<script>
+  function Checkpassword() {
+    if (document.signup.pwd.value != document.signup.cpwd.value) {
+      alert("password does not match");
+      return false;
+    } else {
+      return true;
+    }
+  }
+</script>
+
+<div class="ui container login">
+  <center><h1 style="margin-bottom: 20px">Candidate SignUp</h1></center>
+  <form
+    class="ui form"
+    name="signup"
+    onsubmit="return Checkpassword()"
+    method="POST"
+  >
+    {% csrf_token %}
+    <div class="two fields">
+      <div class="field">
+        <label for="fname">FirstName : </label>
+        <input
+          type="text"
+          name="fname"
+          id="fname"
+          placeholder="Enter first Name"
+          required
+        />
+      </div>
+      <div class="field">
+        <label for="lname">LastName : </label>
+        <input
+          type="text"
+          name="lname"
+          id="lname"
+          placeholder="Enter Last Name"
+        />
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label for="dob">Date of Birth : </label>
+        <input type="Date" name="dob" id="dob" />
+      </div>
+      <div class="inline field">
+        <label for="gender">Gender : </label>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            border: 2px solid yellow;
+            border-radius: 5px;
+          "
+          class="radio"
+        >
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="gender" value="Male" id="male" />
+              <label>Male</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="gender" value="Female" id="female" />
+              <label>Female</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="mobile">Mobile : </label>
+      <input
+        type="text"
+        name="mobile"
+        id="mobile"
+        placeholder="Enter mobile number"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="email">Email : </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter Email Address"
+        required
+      />
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label for="pwd">Password : </label>
+        <input
+          type="password"
+          name="pwd"
+          id="pwd"
+          placeholder="Enter Password"
+          required
+        />
+      </div>
+      <div class="field">
+        <label for="cpwd">Confirm Password : </label>
+        <input
+          type="password"
+          name="cpwd"
+          id="cpwd"
+          placeholder="Re-enter Password"
+          required
+        />
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-around">
+      <button class="btn" type="submit" value="submit">SignUp</button>
+      <button class="btn" type="reset">Clear</button>
+    </div>
+  </form>
+</div>
+
+{% include 'footer.html'%} {% if error == "no" %}
+<script>
+  alert("SignUp Successful");
+  window.location=('{% url 'canteen_login' %}')
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Something went wrong,Try again!");
+</script>
+{% endif %} {% endblock %}

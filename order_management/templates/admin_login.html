@@ -1,0 +1,28 @@
+{% load static%} {% block body %} {% include 'navigation.html'%}
+
+<center>
+  <form class="ui container login" method="post">
+    {% csrf_token %}
+    <center><h1>Admin Login</h1></center>
+    <br />
+    <label for="name"><b>Username:</b></label>
+    <input type="text" name="uname" id="name" placeholder="Enter Username" />
+    <br />
+    <label for="pass"><b>Password:</b></label>
+    <input type="password" name="pwd" id="pass" placeholder="Enter password" />
+    <br />
+    <button type="submit" class="btn">Submit</button>
+    <button type="reset" class="btn">Clear</button>
+  </form>
+</center>
+
+{% include 'footer.html'%} {% if error == "no" %}
+<script>
+  alert("Login Successful");
+  window.location=('{% url 'admin_home' %}')
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Invalid login credentials,Try again!");
+</script>
+{% endif %} {% endblock %}

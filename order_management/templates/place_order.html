@@ -1,0 +1,28 @@
+{% load static %} {% block body %} {% include 'student_nav.html' %}
+<div class="ui container login">
+  <center><h1 style="margin-bottom: 20px">Place Order</h1></center>
+  <form class="ui form" name="placeorder" method="POST">
+    {% csrf_token %}
+  
+    <div class="field">
+      <label for="description">Description : </label>
+      <textarea name="description" id="description"></textarea>
+    </div>
+
+    <div style="display: flex; justify-content: space-around">
+      <button class="btn" type="submit" value="submit">Place</button>
+      <button class="btn" type="reset">Clear</button>
+    </div>
+  </form>
+</div>
+
+{% include 'footer.html'%} {% if error == "no" %}
+<script>
+  alert("Order Placed Successfully");
+  window.location=('{% url 'ordering' %}') 
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Something went wrong,Try again!");
+</script>
+{% endif %} {%endblock body %}

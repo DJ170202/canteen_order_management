@@ -1,0 +1,44 @@
+{% load static%} {% block body %} 
+
+<center style="margin: 50px; font-size: 15px">
+  <b style="font-size: 30px">Recruiters with Pending Status</b>
+
+  <table class="ui selectable celled table" id="example">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Full Name</th>
+        <th>Email ID</th>
+        <th>Mobile</th>
+        <th>Company</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for i in data %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.user.first_name }} {{ i.user.last_name }}</td>
+        <td>{{ i.user.username }}</td>
+        <td>{{ i.mobile }}</td>
+        <td>{{ i.company }}</td>
+        <td>{{ i.status }}</td>
+        <td style="display: flex; justify-content: space-around">
+          <a class="ui button btn" href="{% url 'approve' i.id %}"> Approve </a>
+          <a
+            class="ui button btn"
+            href="{% url 'reject' i.user.id %}"
+            onclick="return confirm('Do you really want to reject this recruiter?')"
+          >
+            Reject
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</center>
+
+{%endblock%}

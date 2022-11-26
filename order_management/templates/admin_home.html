@@ -1,0 +1,53 @@
+{% load static%} {% block body %} {% include 'admin_nav.html'%}
+
+{% comment %} <div
+  style="
+    display: flex;
+    justify-content: space-around;
+    height: 80%;
+    align-items: center;
+  "
+>
+  <div class="ui card bc" style="margin: 0">
+    <div class="content">
+      <div class="center aligned header" style="font-size: 25px">
+        Candidates
+      </div>
+      <div class="center aligned" style="margin-top: 10px">
+        <i class="user icon huge"></i>
+      </div>
+      <div
+        class="center aligned header"
+        style="font-size: 25px; margin-top: 10px; font-weight: bold"
+      >
+        {{ccount}}
+      </div>
+    </div>
+  </div>
+
+  <div class="ui card bc" style="margin: 0">
+    <div class="content">
+      <div class="center aligned header" style="font-size: 25px">
+        Recruiters
+      </div>
+      <div class="center aligned" style="margin-top: 10px">
+        <i class="user icon huge"></i>
+      </div>
+      <div
+        class="center aligned header"
+        style="font-size: 25px; margin-top: 10px; font-weight: bold"
+      >
+        {{rcount}}
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+<div style = "margin: 1rem 0 3rem 0">
+  <h1>Hello!</h1>
+</div>
+<ul>
+  <li style="font-size: 30px; margin: 2rem 0 2rem 0;">Hi! I am ADMIN</li>
+  <li style="font-size: 30px; margin: 2rem 0 2rem 0;">I am responsible for adding canteens, students</li>
+  <li style="font-size: 30px; margin: 2rem 0 2rem 0;">I also have the authority to remove canteens, students whenever required.</li>
+</ul>
+{% include 'footer.html' %} {%endblock%}

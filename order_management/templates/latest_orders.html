@@ -1,0 +1,36 @@
+{% load static %}{% block body %} {% include 'navigation.html' %}
+
+<center style="margin: 50px">
+  <b style="font-size: 30px">Latest orders</b>
+
+  <table class="ui selectable celled table" id="example">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Job Title</th>
+        <th>Location</th>
+        <th>End Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for i in data %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.title }}</td>
+        <td>{{ i.company }}</td>
+        <td>{{ i.location }}</td>
+        <td>{{ i.end_date }}</td>
+        <td>
+          <a href="{% url 'canteen_login' %}" class="ui button btn"
+            >Login to Apply</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</center>
+
+{% endblock body %}
